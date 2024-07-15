@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block content %}
+Hello, {{ user.username|default:'Guest' }}!
+<a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+</html>
