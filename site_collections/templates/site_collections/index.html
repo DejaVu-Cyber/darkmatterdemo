@@ -14,7 +14,7 @@
                 <tr>
                 <td>{{collection_target.name}}</td>
                 <td>{{collection_target.time_created}}</td>
-                <td>link</td>
+                <td> <a href= "{% url 'detail' collection_target.name %}"> detail</a></td>
                 </tr>
             {% endfor %}
 

@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # substitute custom user model
 AUTH_USER_MODEL = "users.User"
 #redirect users to dashboard once logged in
-LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_REDIRECT_URL = "chat"
 LOGOUT_REDIRECT_URL = "login"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/

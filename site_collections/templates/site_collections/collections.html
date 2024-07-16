@@ -1,20 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'site_collections/index.html' %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 {% block collections %}
  <table>
         <tr>
-            <th>Collection target</th>
-            <th>Time Created</th>
-            <th>Expand</th>
+            <th>Created</th>
+            <th>Translated</th>
+            <th>Original</th>
         </tr>
 
 
             {% for collection in collection_list %}
                 <tr>
-                <td>{{collection_target.name}}</td>
-                <td>{{collection_target.time_created}}</td>
-                <td>link</td>
+                <td>{{collection.time_created}}</td>
+                <td>{{collection.translated_url}}</td>
+                <td>{{collection.original_url}}</td>
                 </tr>
             {% endfor %}
 
