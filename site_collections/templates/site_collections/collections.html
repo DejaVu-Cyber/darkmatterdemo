@@ -1,8 +1,8 @@
-
 {% extends 'base.html' %}
-{% block collection_targets %}
-
-    <table>
+<!DOCTYPE html>
+<html lang="en">
+{% block collections %}
+ <table>
         <tr>
             <th>Collection target</th>
             <th>Time Created</th>
@@ -10,7 +10,7 @@
         </tr>
 
 
-            {% for collection_target in collection_target_list %}
+            {% for collection in collection_list %}
                 <tr>
                 <td>{{collection_target.name}}</td>
                 <td>{{collection_target.time_created}}</td>
@@ -24,7 +24,6 @@
 
     </table>
 
-
-
 {% endblock %}
+
 </html>
