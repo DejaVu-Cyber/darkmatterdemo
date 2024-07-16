@@ -12,5 +12,9 @@
 </form>
 
 <a href="{% url 'login' %}">Back to login</a>
+
+{% if errors is not None%}
+    {{errors}}
+{% endif %}
 {% endblock %}
 </html>

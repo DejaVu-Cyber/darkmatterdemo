@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collection targets</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Collection target</th>
+            <th>Time Created</th>
+            <th>Expand</th>
+        </tr>
+
+        <tr>
+            {% for collection_target in collection_target_list %}
+                <td>{{collection_target.name}}</td>
+                <td>{{collection_target.time_created}}</td>
+                <td>link</td>
+            {% endfor %}
+
+        </tr>
+
+
+
+    </table>
+
+
+</body>
+</html>

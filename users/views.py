@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 from users.forms import CustomUserCreationForm
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.models import AnonymousUser
 
 
-#@permission_required('auth.view_user')
+@login_required
 def dashboard(request):
     if request.user is AnonymousUser:
         return render(request, "registration/login.html")
@@ -17,7 +17,7 @@ def register(request):
     if request.method == "GET":
         return render(
             request, "users/register.html",
-            {"form": CustomUserCreationForm}
+            {"form": CustomUserCreationForm, "errors" : None}
         )
     elif request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -27,4 +27,6 @@ def register(request):
             login(request, user)
             return redirect(reverse("dashboard"))
         else:
-            return "yuh"
+            return render(
+                request, "users/register.html", {"form" : CustomUserCreationForm, "errors" : form.errors}
+            )
