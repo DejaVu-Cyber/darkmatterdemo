@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import BaseUserCreationForm
 from users.models import User
+from django.forms import ModelForm
 
-class CustomUserCreationForm(BaseUserCreationForm):
-    class Meta(BaseUserCreationForm.Meta):
+class update_user_form(ModelForm):
+    class Meta():
         model = User
-        fields = BaseUserCreationForm.Meta.fields + ("email","phone_number")
+        fields = ("username","email","phone_number")

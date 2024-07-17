@@ -1,4 +1,16 @@
 {% extends 'base.html' %}
+
 {% block collection_manager %}
-<p><a href="{url 'add_collection' "> add collection</a></p>
+
+<div id="form" style = "z-index:100; position: fixed;" >
+<form  method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% if errors is not None %}
+    {{errors}}
+{% endif %}
+</div>
+
 {% endblock %}

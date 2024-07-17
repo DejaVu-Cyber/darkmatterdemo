@@ -14,7 +14,7 @@
 
             {% for collection in collection_list %}
                 <tr>
-                <td>{{collection.time_created}}</td>
+                <td>{{collection.time_created|date:"m/d/Y G:i:s"}}</td>
                 <td>{{collection.translated_url}}</td>
                 <td>{{collection.original_url}}</td>
                 </tr>

@@ -5,16 +5,22 @@
     <table>
         <tr>
             <th>Collection target</th>
-            <th>Time Created</th>
+            <th>Last Collected</th>
             <th>Expand</th>
+            {% if request.user.collection_manager %}
+                <th>Options</th>
+            {% endif %}
         </tr>
 
 
             {% for collection_target in collection_target_list %}
                 <tr>
                 <td>{{collection_target.name}}</td>
-                <td>{{collection_target.time_created}}</td>
+                <td>{{ collection_target.last_modified|date:"m/d/Y G:i:s" }}</td>
                 <td> <a href= "{% url 'detail' collection_target.name %}"> detail</a></td>
+                {% if request.user.collection_manager %}
+                    <td> <a href= "{% url 'edit_collection' collection_target.name %}">edit</a>  </td>
+                {% endif %}
                 </tr>
             {% endfor %}
 

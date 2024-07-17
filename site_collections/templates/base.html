@@ -20,6 +20,7 @@
         bottom: 0;
         top: 20%;
         width: 50%;
+        z-index: 1:
     }
     #collections {
         position: absolute;
@@ -27,6 +28,15 @@
         width: 50%;
         top: 20%;
         bottom: 1px;
+        z-index: 1;
+    }
+    #chat {
+
+        margin: auto;
+        width: 50%;
+
+        bottom: 0px;
+
     }
 </style>
 
@@ -47,14 +57,15 @@
     </div>
     <div id="head">
         <h1>dark matter</h1>
-        <p> hell0, {{request.user.username}}</p>
     </div>
     <div id="menu">
         <a href="{% url 'chat' %}">results</a>
         <a href="{% url 'index' %}">data</a>
         {% if request.user.collection_manager %}
-        <a href="{% url 'manage_collections' %} ">manage collections </a>
+        <a href="{% url 'manage_collections' %}">manage collections </a>
         {% endif %}
+        <a href="{% url 'dashboard' %}">profile</a>
+        <a href="{% url 'logout' %}">logout</a>
 
 
     </div>
@@ -67,9 +78,12 @@
         {% endblock %}
     </div>
     <div id = "collection_manager">
-        {% block collection_manger %}
+        {% block collection_manager %}
         {% endblock %}
     </div>
-
+    <div id="profile">
+        {% block profile %}
+        {% endblock %}
+    </div>
 </div>
 </html>

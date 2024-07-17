@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'users_base.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
-Hello, {{ user.username|default:'Guest' }}!
-<a href="{% url 'logout' %}">Logout</a>
-<a href="{% url 'index' %}">index</a>
+{% block profile %}
+<div style="z-index:100; position: fixed;">
+Hello, {{ user.username|default:'Guest' }}
 
+<pre>User Info
+username: {{user.username}}
+email: {{user.email}}
+phone number: {{user.phone_number}}
+collection manager: {{user.collection_manager}}
+joined: {{user.date_joined}}
+</pre>
+<a href="{% url 'password_change' %}">change password</a>
+<a href="{% url 'update user' %}">edit profile</a>
+</div>
 {% endblock %}
 </html>
