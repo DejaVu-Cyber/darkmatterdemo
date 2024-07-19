@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv("darkmatterdemo/keys.env")
 # substitute custom user model
 AUTH_USER_MODEL = "users.User"
 # redirect users to dashboard once logged in
@@ -32,11 +33,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-load_dotenv(override=True)
+
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD =os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_KEY")
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "lucas@dejavucyber.com"
 

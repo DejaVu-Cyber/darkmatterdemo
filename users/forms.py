@@ -9,4 +9,6 @@ class update_user_form(ModelForm):
 class admin_update_user_form(ModelForm):
     class Meta():
         model = User
-        fields = ("username","email","phone_number","password","collection_manager")
+        fields = ("username","email","phone_number","password","collection_manager","is_superuser")
+
+        

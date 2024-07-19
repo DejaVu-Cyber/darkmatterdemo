@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block update_user %}
-<h2>update profile</h2>
+<h2>update user</h2>
 
 <form method="post" style="position:absolute; z-index:100; top:200px;">
     {% csrf_token %}
@@ -11,8 +11,11 @@
     <input type="submit" value="Submit">
 </form>
 
+{% if request.user.is_superuser %}
+<a href="{% url 'manage_users' %}">Back</a>
+{% else %}
 <a href="{% url 'dashboard' %}">Back to profile</a>
-
+{% endif %}
 {% if errors is not None %}
     {{errors}}
 {% endif %}

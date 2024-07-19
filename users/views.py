@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import AnonymousUser
 from .models import User
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -18,35 +19,40 @@ def dashboard(request):
 # Create your views here.
 @login_required()
 def update_user(request, username=None):
-    user = None
-    form = None
-    if username is None:
-        user = request.user
-        form = update_user_form(instance=user)
-    else:
-        user = User.objects.get(username=username)
-        form = admin_update_user_form(instance=user)
-    if request.method == "GET" :
+    if request.method == "GET" and username is not None:
         return render(
             request, "users/update_user.html",
-            {"form": form, "errors" : None}
+            {"form": admin_update_user_form(instance=User.objects.get(username=username)), "errors" : None}
         )
-    elif request.method == "POST":
-        if username is None:
-            form = update_user_form(request.POST, instance=user)
-        else:
-            form = admin_update_user_form(request.POST, instance=user)
+    elif request.method == "GET":
+        return render(
+            request, "users/update_user.html",
+            {"form": update_user_form(instance=request.user), "errors": None}
+        )
+    elif request.method == "POST" and username is not None:
+        form = admin_update_user_form(request.POST, instance=User.objects.get(username=username) )
         if form.is_valid():
-
             user = form.save(commit=False)
-            user.password = make_password(user.password)
+            print(type(user))
+            if "password" in form.changed_data:
+                user.password = make_password(user.password)
             user.save()
-            login(request, user)
-            return redirect(reverse("dashboard"))
+            return redirect(reverse("manage_users"))
         else:
             return render(
                 request, "users/update_user.html", {"form" : form, "errors" : form.errors}
             )
+    elif request.method == "POST":
+        form = update_user_form(request.POST,instance=request.user)
+        if form.is_valid():
+                user = form.save()
+                login(request,user)
+                return redirect(reverse("manage_users"))
+        else:
+            return render(
+                request, "users/update_user.html", {"form" : form, "errors" : form.errors}
+            )
+
 def manage_users(request,username=None):
 
     if request.method == "GET" and username is not None:
@@ -55,3 +61,7 @@ def manage_users(request,username=None):
         return render(request, "users/manage_users.html",
                       {"user_list": User.objects.all()})
 
+def add_user(request):
+    if request.method == "GET":
+        form = UserCreationForm()
+        form.password1

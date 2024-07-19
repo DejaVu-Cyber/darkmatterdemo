@@ -6,20 +6,24 @@
         display: none;
     }
     #panels {
+       font-family: Unbounded;
        position: absolute;
        top: 0;
+       left: 0;
        bottom: 0;
        width: 100%;
+       background: black;
+       color: white;
        }
     #head {
         height:30px;
     }
     #targets {
         position: absolute;
-        left: 0;
+        left: 200;
         bottom: 0;
         top: 20%;
-        width: 50%;
+        width: 70%;
         z-index: 1:
     }
     #collections {
@@ -27,7 +31,7 @@
         right: 0;
         width: 50%;
         top: 20%;
-        bottom: 1px;
+        bottom: 0px;
         z-index: 1;
     }
     #chat {
@@ -38,6 +42,26 @@
         bottom: 0px;
 
     }
+    a:link, a:visited {
+        background-color: grey;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.5s;
+    }
+    a:hover, a:active {
+        background-color: purple;
+
+
+    }
+    th,tr,td{
+        color: white;
+        border: 1px solid purple;
+        padding: 15px;
+    }
+
 </style>
 
 <!DOCTYPE html>
@@ -46,6 +70,7 @@
     <meta charset="UTF-8">
     <title>Dark Matter</title>
 </head>
+<body>
 <div id = "panels">
     <div id = "targets">
         {% block collection_targets %}
@@ -93,4 +118,5 @@
     {% endblock %}
 </div>
 </div>
+</body>
 </html>
