@@ -64,6 +64,9 @@
         {% if request.user.collection_manager %}
         <a href="{% url 'manage_collections' %}">manage collections </a>
         {% endif %}
+        {% if request.user.is_superuser %}
+        <a href="{% url 'manage_users' %}">manage users</a>
+        {% endif %}
         <a href="{% url 'dashboard' %}">profile</a>
         <a href="{% url 'logout' %}">logout</a>
 
@@ -85,5 +88,9 @@
         {% block profile %}
         {% endblock %}
     </div>
+<div id="update_user" >
+    {% block update_user %}
+    {% endblock %}
+</div>
 </div>
 </html>

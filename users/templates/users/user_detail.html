@@ -1,0 +1,17 @@
+{% extends 'users/manage_users.html' %}
+{% block user %}
+<div>
+
+
+<pre>User Info
+username: {{current_user.username}}
+email: {{current_user.email}}
+phone number: {{current_user.phone_number}}
+collection manager: {{current_user.collection_manager}}
+joined: {{current_user.date_joined}}
+</pre>
+<a href="{% url 'password_change' %}">change password</a>
+<a href="{% url 'update user' current_user.username %}">edit profile</a>
+</div>
+
+{% endblock %}

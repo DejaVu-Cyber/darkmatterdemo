@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'users_base.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block update_user %}
 <h2>update profile</h2>
 
-<form method="post">
+<form method="post" style="position:absolute; z-index:100; top:200px;">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Submit">
 </form>
 
-<a href="{% url 'login' %}">Back to login</a>
+<a href="{% url 'dashboard' %}">Back to profile</a>
 
-{% if errors is not None%}
+{% if errors is not None %}
     {{errors}}
 {% endif %}
 {% endblock %}
