@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import permission_required, login_required
-from users.forms import update_user_form,admin_update_user_form
+from users.forms import update_user_form,admin_update_user_form, add_user_form
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.models import AnonymousUser
 from .models import User
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.forms import UserCreationForm
+from django.template.loader import render_to_string
+import string
+import secrets
+alphabet = string.ascii_letters + string.digits
+from django.core.mail import send_mail
+
 
 
 
@@ -63,5 +68,30 @@ def manage_users(request,username=None):
 
 def add_user(request):
     if request.method == "GET":
-        form = UserCreationForm()
-        form.password1
+        temp_username = ''.join(secrets.choice(alphabet) for i in range(8))
+        data = {
+            "username":temp_username
+        }
+        form = add_user_form(initial=data)
+        return render(request,'users/add_user.html',{"form":form})
+    if request.method == "POST":
+        form = add_user_form(request.POST)
+        if form.is_valid():
+            if form.cleaned_data.get("activate_user"):
+                context = {
+                    "username" : form.cleaned_data.get("username"),
+                    "password" : form.cleaned_data.get("password1")
+                }
+                rendered = render_to_string("users/activate_user_email.html",context=context)
+                send_mail(subject="activating your darkmatter account",
+                          message="",
+                          recipient_list=[form.cleaned_data.get("email")],
+                          from_email=None, #defaults to whatever is set in settings.py
+                          html_message=rendered
+                          )
+            form.save()
+            return render(request,"users/manage_users.html", context = {"user_list": User.objects.all()})
+
+
+
+

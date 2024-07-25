@@ -3,14 +3,33 @@
 {% extends 'users_base.html' %}
 
 {% block content %}
-<h2>Login</h2>
+<style>
+    #login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: black;
+        color: white;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    form {
+        text-align: center;
+    }
+</style>
+<div id="login">
+    <form method="post">
+        <h2>Dark Matter</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+</div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
-<a href="{% url 'password_reset' %}">forgot password?</a>
+<div
 
 {% endblock %}
 </html>
