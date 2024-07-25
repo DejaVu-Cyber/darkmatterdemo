@@ -10,23 +10,34 @@
         justify-content: center;
         align-items: center;
         position: absolute;
+        left:0;
         width: 100%;
         top: 100px;
     }
+
     #panels {
-       font-family: Unbounded;
-       position: absolute;
-       top: 0;
-       left: 0;
-       bottom: 0;
-       width: 100%;
-       background: black;
-       color: white;
-       }
+        display: flex;
+        justify-content: space-evenly;
+        font-family: Unbounded;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:100%;
+        bottom: 0;
+
+        background: black;
+        color: white;
+        }
     #head {
+        position:absolute;
+        width: 100%;
+        right:0;
+        text-align:center;
         height:30px;
+        z-index:2;
+        color:white;
     }
-    #targets {
+    #left {
         position: absolute;
         left: 200;
         bottom: 0;
@@ -36,29 +47,27 @@
         overflow-y: scroll;
         height: 70%;
     }
-    #targets::-webkit-scrollbar{
+    #left::-webkit-scrollbar{
         background-color: black;
     }
-    #targets::-webkit-scrollbar-thumb{
+    #left::-webkit-scrollbar-thumb{
         background-color: grey;
     }
-    #targets::-webkit-scrollbar-button{
+    #left::-webkit-scrollbar-button{
         background-color: black;
     }
-    #collections {
+    #right {
         position: absolute;
         right: 0;
-        width: 50%;
+
         top: 20%;
         bottom: 0px;
         z-index: 1;
     }
-    #chat {
-
-        margin: auto;
-        width: 50%;
-
-        bottom: 0px;
+    #center {
+        position: absolute;
+        width:20%;
+        top:20%;
 
     }
     a:link, a:visited {
@@ -92,52 +101,38 @@
 </head>
 <body>
 <div id = "panels">
-    <div id = "targets">
-        {% block collection_targets %}
+    <div id = "left">
+        {% block left %}
         {% endblock %}
     </div>
-    <div id="collections">
-        {% block collections %}
+    <div id="center">
+        {% block center %}
         {% endblock %}
     </div>
-    <div id="head">
-        <h1>Dark Matter</h1>
+    <div id="right">
+        {% block right %}
+        {% endblock %}
     </div>
-    <div id="menu">
-        <a href="{% url 'chat' %}">results</a>
-        <a href="{% url 'index' %}">data</a>
-        <a href="{% url 'search_collection_targets' %}">search</a>
-        {% if request.user.collection_manager %}
-        <a href="{% url 'manage_collections' %}">manage collections </a>
-        {% endif %}
-        {% if request.user.is_superuser %}
-        <a href="{% url 'manage_users' %}">manage users</a>
-        {% endif %}
-        <a href="{% url 'dashboard' %}">profile</a>
-        <a href="{% url 'logout' %}">logout</a>
+
+</div>
+<div id="menu">
+    <a href="{% url 'chat' %}">results</a>
+    <a href="{% url 'index' %}">data</a>
+    <a href="{% url 'search_collection_targets' %}">search</a>
+    {% if request.user.collection_manager %}
+    <a href="{% url 'manage_collections' %}">manage collections </a>
+    {% endif %}
+    {% if request.user.is_superuser %}
+    <a href="{% url 'manage_users' %}">manage users</a>
+    {% endif %}
+    <a href="{% url 'dashboard' %}">profile</a>
+    <a href="{% url 'logout' %}">logout</a>
+</div>
+
+<div id="head">
+    <h1>Dark Matter</h1>
+</div>
 
 
-    </div>
-    <div id = "chat">
-        {% block chat %}
-        {% endblock %}
-    </div>
-    <div id = "search">
-        {% block search %}
-        {% endblock %}
-    </div>
-    <div id = "collection_manager">
-        {% block collection_manager %}
-        {% endblock %}
-    </div>
-    <div id="profile">
-        {% block profile %}
-        {% endblock %}
-    </div>
-<div id="update_user" >
-    {% block update_user %}
-    {% endblock %}
-</div>
-</div>
 </body>
 </html>

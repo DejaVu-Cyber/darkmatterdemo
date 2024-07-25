@@ -1,5 +1,7 @@
 to use website run the following:
+
 python manage.py migrate
+
 python manage.py runserver
 
 This will begin a local webserver. However, none of the website is accessible without an account. to create one, use the following:
