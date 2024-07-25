@@ -73,7 +73,7 @@ def add_user(request):
             "username":temp_username
         }
         form = add_user_form(initial=data)
-        return render(request,'users/add_user.html',{"form":form})
+        return render(request,'users/add_user.html',{"form":form,"user_list":User.objects.all()})
     if request.method == "POST":
         form = add_user_form(request.POST)
         if form.is_valid():

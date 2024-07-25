@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'users/manage_users.html' %}
 {% block collections %}
 
 <form method="post" style="position:absolute; z-index:100; top:200px;">
@@ -6,7 +6,7 @@
     {{form}}
     <input type="submit" value="Submit">
 </form>
-
+<p>leave password fields blank to have a random temporary password generated</p>
 
 
 {% endblock %}

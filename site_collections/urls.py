@@ -7,6 +7,7 @@ urlpatterns = [
     path("", chat, name = "chat"),
     path("manage_collections/<str:collection_target_name>/",manage_collections, name = "edit_collection" ),
     path("manage_collections/<str:collection_target_name>/delete", delete_collection, name = "delete_collection"),
-    path("manage_collections/",manage_collections, name = "manage_collections" )
+    path("manage_collections/",manage_collections, name = "manage_collections" ),
+    path("search", search_collection_targets, name="search_collection_targets")
 
 ]

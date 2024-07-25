@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from .forms import chat_form, collection_target_form
 from .models import collection,collection_target
-
+from .filters import collection_target_filter
 @login_required()
 def index(request):
     collection_target_list = collection_target.objects.order_by("-last_modified")
@@ -69,3 +69,6 @@ def delete_collection(request, collection_target_name):
         "collection_target_list": collection_target_list
     }
     return render(request, "site_collections/index.html", context)
+def search_collection_targets(request):
+    f = collection_target_filter(request.GET, queryset=collection_target.objects.all())
+    return render(request, 'site_collections/search.html', {"filter": f})
