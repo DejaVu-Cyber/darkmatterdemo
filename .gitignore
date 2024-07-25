@@ -1,2 +1,7 @@
-
+*.pyc
 db.sqlite3
+*.env
+*.warc
+*.warc.gz
+*.sqlite3
+*.warc
