@@ -17,6 +17,8 @@ class collection_target(models.Model):
         ("Mandarin", "Mandarin")
     ]
     language = models.CharField(max_length=20, choices=language_choices)
+    host_url = models.URLField()
+
 
 
     def __str__(self):
@@ -28,12 +30,13 @@ class collection(models.Model):
     original_url = models.URLField()
     target = models.ForeignKey(collection_target, on_delete=models.CASCADE)
     collection_point = models.CharField(max_length=30)
+'''
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
         self.target.last_modified = timezone.now()
         self.target.save(update_fields = ["last_modified"])
-
+'''
 
 #Type: web page (for now other types added later)
 #Date Collected: Full timestamp down to second

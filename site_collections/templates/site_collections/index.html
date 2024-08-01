@@ -19,7 +19,7 @@
                 <td>{{ collection_target.last_modified|date:"m/d/Y G:i:s" }}</td>
                 <td> <a href= "{% url 'detail' collection_target.name %}"> detail</a></td>
                 {% if request.user.collection_manager %}
-                    <td> <a href= "{% url 'edit_collection' collection_target.name %}">edit</a>  </td>
+                    <td> <a href= "{% url 'edit_collection' collection_target.name %}">edit</a> <a href = "{% url 'record_collection' collection_target.name %}">record</a> </td>
                 {% endif %}
                 </tr>
             {% endfor %}

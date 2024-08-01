@@ -44,6 +44,7 @@ DEFAULT_FROM_EMAIL = "lucas@dejavucyber.com"
 # Application definition
 
 INSTALLED_APPS = [
+
     'site_collections',
     'users',
     'django.contrib.admin',

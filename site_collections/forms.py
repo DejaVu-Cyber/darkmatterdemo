@@ -6,4 +6,4 @@ class chat_form(forms.Form):
 class collection_target_form(ModelForm):
     class Meta:
         model = collection_target
-        fields = ["name","type","language"]
+        fields = ["name","type","language","host_url"]

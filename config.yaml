@@ -1,0 +1,17 @@
+---
+framed_replay: false
+collections:
+  live: $live
+collections_root: collections
+archive_paths: archive
+index_paths: indexes
+autoindex: 30
+enable_auto_fetch: true
+recorder:
+  rollover_size: 100000000
+  rollover_idle_secs: 600
+  source_coll: live
+  filename_template: '{timestamp}_{hostname}.warc.gz'
+  source_filter: live
+  enable_put_custom_record: false
+redirect_to_exact: true

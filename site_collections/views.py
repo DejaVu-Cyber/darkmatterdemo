@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.template.loader import get_template
+import requests
 from .forms import chat_form, collection_target_form
 from .models import collection,collection_target
 from .filters import collection_target_filter
@@ -72,3 +72,10 @@ def delete_collection(request, collection_target_name):
 def search_collection_targets(request):
     f = collection_target_filter(request.GET, queryset=collection_target.objects.all())
     return render(request, 'site_collections/search.html', {"filter": f})
+
+def record_collection(request, collection_target_name):
+    target = collection_target.objects.get(name=collection_target_name)
+    r = requests.get(f'http://localhost:8080/collections_archive/record/{target.host_url}')
+    c = collection(translated_url = "x.com", original_url = target.host_url, collection_point = "",target=target)
+    c.save()
+    return render(request,'site_collections/index.html',{'collection_target_list':collection_target.objects.all()})
