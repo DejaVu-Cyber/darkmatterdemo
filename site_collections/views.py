@@ -16,9 +16,10 @@ def index(request):
 def collections(request,collection_target_name):
     target = collection_target.objects.get(name=collection_target_name)
     collection_list = target.collection_set.all()
+
     context = {
         "collection_list":collection_list,
-        "collection_target_list":collection_target.objects.order_by("-last_modified")
+        "collection_target_list":collection_target.objects.order_by("-last_modified"),
     }
     return render(request, "site_collections/collections.html", context)
 @login_required()
@@ -79,3 +80,14 @@ def record_collection(request, collection_target_name):
     c = collection(translated_url = "x.com", original_url = target.host_url, collection_point = "",target=target)
     c.save()
     return render(request,'site_collections/index.html',{'collection_target_list':collection_target.objects.all()})
+
+def replay_collection(request,collection_target_name, collection_pk):
+    target = collection_target.objects.get(name=collection_target_name)
+    collection_list = target.collection_set.all()
+
+    context = {
+        "collection_list": collection_list,
+        "collection_target_list": collection_target.objects.order_by("-last_modified"),
+        "collection":collection.objects.get(pk=collection_pk)
+    }
+    return render(request,'site_collections/replay.html',context)

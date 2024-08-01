@@ -2,6 +2,7 @@ from django.urls import path, re_path, include
 from site_collections.views import *
 
 urlpatterns = [
+    path("index/<str:collection_target_name>/<str:collection_pk>", replay_collection, name='replay'),
     path("index/<str:collection_target_name>/", collections, name = "detail"),
     re_path(r"^index/", index, name="index"),
     path("", chat, name = "chat"),

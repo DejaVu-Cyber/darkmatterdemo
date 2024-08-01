@@ -1,0 +1,5 @@
+{% extends 'site_collections/collections.html' %}
+{% block center %}
+<iframe width="960px"
+        height="540px" src="http://localhost:8080/collections_archive/{{collection.time_created|date:'YmdHis'}}/{{collection.original_url}}/">yuh</iframe>
+{% endblock %}
