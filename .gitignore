@@ -5,3 +5,4 @@ db.sqlite3
 *.warc.gz
 *.sqlite3
 *.warc
+darkmatterdemo/keys.env

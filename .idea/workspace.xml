@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a364a923-223d-43ad-8a9e-7ef9c55802f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collections/collections_archive/indexes/autoindex.cdxj" beforeDir="false" afterPath="$PROJECT_DIR$/collections/collections_archive/indexes/autoindex.cdxj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkmatterdemo/keys.env" beforeDir="false" afterPath="$PROJECT_DIR$/darkmatterdemo/keys.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkmatterdemo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/darkmatterdemo/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site_collections/templates/site_collections/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site_collections/templates/site_collections/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
