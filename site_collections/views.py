@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-import requests
+import requests, webbrowser
 from .forms import chat_form, collection_target_form
 from .models import collection,collection_target
 from .filters import collection_target_filter
