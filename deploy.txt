@@ -1,0 +1,9 @@
+To build docker image, run
+
+sudo docker build --tag darkmatter .
+
+Then run the image using 
+
+sudo docker run -e "DJANGO_KEY=*fz2y34@dz(b#+)$wpo*1cbdkspialp5yi+%6xj_2xirqu%7t$" darkmatter
+
+Needs work, but it at least runs it in an image. Just need to use nginx as reverse proxy, and we are good.
